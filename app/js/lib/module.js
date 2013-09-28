@@ -15,14 +15,8 @@ define(function(require) {
 		bindActions: function() {
 			var that = this;
 
-			// Set global module context
-			var setContext = function(piped) {
-				app.setContext(that.name);
-				return piped;
-			}
-
 			for (var i in this.actions) {
-				this.actions[i] = _.compose(setContext, _.bind(this.actions[i], this));
+				this.actions[i] = _.bind(this.actions[i], this);
 			}
 		},
 
