@@ -9,8 +9,8 @@ define(function(require) {
 		},
 
 		configure: function(config) {
-			this.config  = config;
-			this.method  = this.resolveMethod();
+			this.config = config;
+			this.method = this.resolveMethod();
 		},
 
 		resolveMethod: function() {
@@ -50,7 +50,7 @@ define(function(require) {
 			var args = this.config[player][key].args;
 			args[1]  = state;
 
-			this.method(args);
+			this.method.apply(this, args);
 		}
 	};
 });
