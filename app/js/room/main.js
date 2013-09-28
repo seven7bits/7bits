@@ -8,9 +8,9 @@ define(['../lib/module', './views/layout'], function(Module, Layout) {
 
 		},
 
-		action: {
+		actions: {
 			index: function() {
-				//var layout = new Layout();
+				alert(1);
 			}
 		},
 
