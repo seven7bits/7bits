@@ -1,8 +1,13 @@
-define(['lib/app', 'router'], function(Application, Router) {
+define(['backbone', 'lib/app', 'router'], function(Backbone, Application, Router) {
 	var app = new Application();
 
+	app.addRegions({
+		conatiner: '#container'
+	});
+
 	app.addInitializer(function() {
-		alert('Initializer');
+		new Router({ container: app.container });
+		Backbone.history.start();
 	});
 
 	return app;
