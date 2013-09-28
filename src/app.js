@@ -75,6 +75,7 @@ Gamepad.prototype.setupIO = function() {
 		})
 
 		socket.on('a', function(data) {
+			data.p = '0';
 			that.io.sockets.in(data.room).emit('a', data);
 		});
 	});

@@ -1,2 +1,51 @@
 script(type="text/template")#template-room-layout
-	h1 heeheheheh
+	.room-main
+		.center
+			a(href='') Get QR Code for quick access
+		.menu-column.column
+			.search
+			input.search-input(type='text', placeholder='Search...')
+			ul.search-result
+			li
+				a(href='') Contra
+				span.label.label-js JS
+			li
+				a(href='') Some Game
+				span.label.label-nes NES
+		.content-column.column
+			div
+				img(src='images/tmp.png', width='512')
+			.controls
+				a.pause(href='') pause
+				a.reset(href='') reset
+				a.sound(href='') sound
+				a.expand(href='') expand
+		.chat-column.column
+			ul.users
+				li
+					| User 1 -
+					span	connected
+				li
+					| User 2 -
+					span	connected
+			.chat
+				.message
+					span John:
+					|	Hey! How are you?
+				.message
+					span John:
+					|	Hey! How are you?
+				.message
+					span John:
+					|	Hey! How are you?
+				.message
+					span John:
+					|	Hey! How are you?
+				.message
+					span John:
+					|	Hey! How are you?
+				.message
+					span John:
+					|	Hey! How are you?
+				.message-input
+					textarea
