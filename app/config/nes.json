@@ -1,8 +1,5 @@
 {
-	"base": {
-		"method": "JSNES.Keyboard.setKey",
-		"context": "JSNES.Keyboard"
-	},
+	"method": "nesKeyboard",
 
 	"0": {
 		"left":   { "args": [37, 777] },
