@@ -1,6 +1,6 @@
 define(function(require) {
 	return require('marionette').Layout.extend({
-		template: '#template-layout',
+		template: '#template-room-layout',
 		regions: {
 			games: '#games',
 			gameArea: '#game-area',
