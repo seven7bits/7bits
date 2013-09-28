@@ -23,9 +23,8 @@
 		for (var i = 0; i < controlsList.length; i++) {
 			var id = controlsList[i]; 
 			var el = document.getElementById(id);
-			el.onmousedown = onMouseDown;
-			el.onmouseup = onMouseUp;
-			el.onmouseout = onMouseUp;
+			el.addEventListener('mousedown', onMouseDown, false);
+			el.addEventListener('mouseup', onMouseUp, false);
 		}
 		Hammer(document.body).on("swiperight", function(ev){ toggleMenu(ev, true);});
 		Hammer(document.body).on("swipeleft", function(ev){ toggleMenu(ev, false);});
@@ -35,11 +34,13 @@
 	function onMouseDown(ev) {
 		ev.currentTarget.className = 'mousedown';
 		socketConnection.emit('a', {k: ev.currentTarget.id, s: 1});
+		ev.currentTarget.addEventListener('mouseout', onMouseUp, false);
 	}
 
 	function onMouseUp(ev) {
 		ev.currentTarget.className = '';
 		socketConnection.emit('a', {k: ev.currentTarget.id, s: 0});
+		ev.currentTarget.removeEventListener('mouseout', onMouseUp, false);
 	}
 
 	function toggleMenu(ev, isShown) {
