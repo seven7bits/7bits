@@ -63,22 +63,25 @@ Gamepad.prototype.setupIO = function() {
 	var that = this;
 
 	this.io.sockets.on('connection', function(socket) {
-		var player = 0;
-		socket.on('room', function(room) {
-			l('Someone joined room:', room);
+		var player, room, group;
+
+		socket.on('room', function(data) {
+			room  = data.room;
+			group = data.group;
+
 			socket.join(room);
 
-			if (typeof that.rooms[room] != 'array') {
-				that.rooms[room] = [];
-			} else {
-				player = that.rooms[room].length;
+			if (!that.rooms[room]) {
+				that.rooms[room] = { viewers: [], players: [] };
 			}
 
-			that.rooms[room].push(socket);
+			console.log(group);
+			player = that.rooms[room][group].length;
+			that.rooms[room][group].push(socket);
 		});
 
 		socket.on('disconnect', function() {
-			l('Someone disconnected');
+			that.rooms[room][group].splice(player, 1);
 		});
 
 		socket.on('a', function(data) {

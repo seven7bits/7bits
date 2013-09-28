@@ -8,11 +8,20 @@
 
 	var menu = document.getElementById('menu');
 
+	function room() {
+		return window.location.href.split('/').pop();
+	}
+
 	function initializeSockets(){
 		socketConnection = io.connect(window.location.host, {
 			'reconnect': true,
 			'reconnection delay': 5000,
 			'max reconnection attempts': 100
+		});
+
+
+		socketConnection.on('connect', function() {
+			socketConnection.emit('room', { room: room(), group: 'players' });
 		});
 	}
 
