@@ -83,7 +83,8 @@ module.exports = function (grunt) {
 					'compress': true
 				},
 				files: {
-					'app/css/gamepad.css': ['styles/gamepad.styl']
+					'app/css/gamepad.css': ['styles/gamepad.styl'],
+					'app/css/main.css': ['styles/main.styl']
 				}
 			}
 		},
