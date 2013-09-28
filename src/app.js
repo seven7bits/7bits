@@ -2,10 +2,11 @@ module.exports = exports = Gamepad;
 
 var express  = require('express')
   , socketio = require('socket.io')
+  , detect   = require('detectmobilebrowsers')
   , http     = require('http')
   , path     = require('path');
 
-var port = 3000;
+var port = process.env.PORT || 3000;
 
 var l = function() {
 	console.log.apply(console, arguments);
@@ -33,18 +34,21 @@ Gamepad.prototype.setupExpress = function() {
 	});
 
 	this.express.use(express.static(__dirname + '/../app'));
+	this.express.use(detect.is_mobile());
 
 	this.express.get('/', function(req, res) {
 		res.render('index', {title: 'Main'});
 	});
 
-	this.express.get('/gamepad', function(req, res) {
-		res.render('gamepad');
-	});
-
 	this.express.get('/:token', function(req, res) {
-		var token = req.params.token;
-		res.render('room', {token: token});
+		var data = { token: req.params.token };
+
+		if (req.is_mobile) {
+			res.render('gamepad', data);
+		} else {
+			res.render('room', data);
+		}
+
 	});
 };
 
@@ -59,12 +63,15 @@ Gamepad.prototype.setupIO = function() {
 	var that = this;
 
 	this.io.sockets.on('connection', function(socket) {
+		var player = 0;
 		socket.on('room', function(room) {
 			l('Someone joined room:', room);
 			socket.join(room);
 
 			if (typeof that.rooms[room] != 'array') {
 				that.rooms[room] = [];
+			} else {
+				player = that.rooms[room].length;
 			}
 
 			that.rooms[room].push(socket);
@@ -75,7 +82,7 @@ Gamepad.prototype.setupIO = function() {
 		});
 
 		socket.on('a', function(data) {
-			data.p = '0';
+			data.p = player;
 			that.io.sockets.in(data.room).emit('a', data);
 		});
 	});
