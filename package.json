@@ -1,0 +1,24 @@
+{
+  "name": "7bits",
+  "version": "0.0.0",
+  "description": "7bits =====",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/seven7bits/7bits.git"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/seven7bits/7bits/issues"
+  },
+  "dependencies": {
+    "socket.io": "~0.9.16",
+    "express": "~3.4.0",
+    "rjs": "~2.10.0",
+    "grunt": "~0.4.1"
+  }
+}
