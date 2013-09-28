@@ -3,7 +3,7 @@ requirejs.config({
 	paths: {
 		'io': '../vendor/socket.io-client/dist/socket.io.min',
 		'jquery': '../vendor/jquery/jquery',
-		'underscore': '../vendor/underscore/underscore',
+		'underscore': '../vendor/underscore-amd/underscore',
 		'backbone': '../vendor/backbone/backbone',
 		'marionette': '../vendor/marionette/lib/backbone.marionette'
 	},
@@ -26,5 +26,6 @@ requirejs.config({
 });
 
 require(['app'], function(app) {
+	window.app = app;
 	app.start();
 });
