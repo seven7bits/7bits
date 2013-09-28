@@ -1,62 +1,95 @@
 html, body
-	margin 0px
-	padding 0px
-	font-family "Helvetica Neue", Helvetica, Arial, sans-serif
-	height 100%
+  margin 0px
+  padding 0px
+  font-family "Helvetica Neue", Helvetica, Arial, sans-serif
+  height 100%
 
 .clear-fix
-	clear both
+  clear both
 
 a
-	color #0088cc
-	text-decoration none
-	&:hover
-		color #005580
-		text-decoration underline
+  color #0088cc
+  text-decoration none
+  &:hover
+    color #005580
+    text-decoration underline
 
 input[type="text"]
-	height 27px
-	border 1px solid #cecece
-	padding 0px 1px
+  height 27px
+  border 1px solid #cecece
+  padding 0px 1px
 
 .label
-	padding 5px 3px
-	border-radius 3px
-	color #ffffff
-	font-size 9px
-	width 30px
-	float right
-	text-align center
-	&.label-js
-		background-color #49afcd
-	&.label-nes
-		background-color #faa732
-		
+  padding 5px 3px
+  border-radius 3px
+  color #ffffff
+  font-size 9px
+  width 30px
+  float right
+  text-align center
+  &.label-js
+    background-color #49afcd
+  &.label-nes
+    background-color #faa732
+
 .room-main
-	width 1052px
-	margin 0px auto
-	padding 10px 0px 0px
-	.center
-		text-align center
-		margin 20px
-	.column
-		float left
-		margin-right 20px
-		&:last-child
-			margin-right 0px
-		&.content-column
-			width 512px
-		&.menu-column
-			.search-input
-				width 100%
-			.search-result
-				padding-left 10px
-				li
-					list-style none
-					padding 0px
-					margin 5px 0px
-					a
-						line-height 24px
+  width 1052px
+  margin 0px auto
+  padding 10px 0px 0px
+  .center
+    text-align center
+    margin 20px
+  .column
+    float left
+    margin-right 20px
+    &:last-child
+      margin-right 0px
+    &.content-column
+      width 512px
+      .controls
+        margin 10px 0px
+        a
+          width 120px
+          margin-right 8px
+          text-align center
+          padding 4px 0px
+          border 1px solid #c5c5c5
+          float left
+          &:last-child
+            margin 0px
+          &:hover
+            text-decoration none
+            background #e8e8e8
+    &.menu-column
+      .search-input
+        width 100%
+      .search-result
+        padding-left 10px
+        li
+          list-style none
+          padding 0px
+          margin 5px 0px
+          a
+            line-height 24px
+    &.chat-column
+      .users
+        li
+          list-style none
+          line-height 30px
+          span
+            color #c5c5c5
+      .chat
+        min-height 400px
+        height 400px
+        overflow-y auto
+        textarea
+          width 100%
+          border 1px solid #c5c5c5
 
 .room-main .column.menu-column, .room-main .column.chat-column
-	width 250px
+  width 250px
+
+.room-main .column.chat-column .users, .room-main .column.chat-column .chat
+  border 1px solid #c5c5c5
+  margin 0px 0px 20px
+  padding 10px 10px
