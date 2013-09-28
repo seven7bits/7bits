@@ -17,6 +17,10 @@ app.get('/', function(req, res){
 	res.render('index', {title: 'Main'});
 });
 
+app.get('/room', function(req, res){
+	res.render('room_all');
+});
+
 app.get('/gamepad', function(req, res){
 	res.render('gamepad');
 });

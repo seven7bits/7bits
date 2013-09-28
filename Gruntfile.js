@@ -84,6 +84,7 @@ module.exports = function (grunt) {
 				},
 				files: {
 					'app/css/gamepad.css': ['styles/gamepad.styl'],
+					'app/css/room.css': ['styles/room.styl'],
 					'app/css/main.css': ['styles/main.styl']
 				}
 			}
