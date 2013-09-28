@@ -62,6 +62,20 @@ Gamepad.prototype.setupIO = function() {
 
 	var that = this;
 
+	var seat = function(room, group, socket) {
+		var guys = that.rooms[room][group];
+
+		for (var i in guys) {
+			if (null == guys[i]) {
+				guys[i] = socket;
+				return i;
+			}
+		}
+
+		guys.push(socket);
+		return guys.length - 1;
+	};
+
 	this.io.sockets.on('connection', function(socket) {
 		var player, room, group;
 
@@ -75,13 +89,11 @@ Gamepad.prototype.setupIO = function() {
 				that.rooms[room] = { viewers: [], players: [] };
 			}
 
-			console.log(group);
-			player = that.rooms[room][group].length;
-			that.rooms[room][group].push(socket);
+			player = seat(room, group, socket);
 		});
 
 		socket.on('disconnect', function() {
-			that.rooms[room][group].splice(player, 1);
+			that.rooms[room][group][player] = null;
 		});
 
 		socket.on('a', function(data) {
