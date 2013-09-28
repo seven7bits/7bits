@@ -1,33 +1,64 @@
-var express = require('express')
-  , jade    = require('jade')
-  , path    = require('path');
+module.exports = exports = Gamepad;
+
+var express  = require('express')
+  , socketio = require('socket.io')
+  , http     = require('http')
+  , path     = require('path');
 
 var port = 3000;
 
-var app = express();
+function Gamepad() {
+	this.express = null;
+	this.io = null;
+}
 
-app.configure(function(){
-	app.set('views', __dirname + '/../views');
-	app.set('view engine', 'jade');
-});
+Gamepad.prototype.start = function() {
+	this.setupExpress();
+	this.setupIO();
+	this.listen();
+}
 
-app.use(express.static(__dirname + '/../app'));
+Gamepad.prototype.setupExpress = function() {
+	this.express = express();
 
-app.get('/', function(req, res){
-	res.render('index', {title: 'Main'});
-});
+	var that = this;
+	this.express.configure(function() {
+		that.express.set('views', __dirname + '/../views');
+		that.express.set('view engine', 'jade');
+	});
 
-app.get('/room', function(req, res){
-	res.render('room_all');
-});
+	this.express.use(express.static(__dirname + '/../app'));
 
-app.get('/gamepad', function(req, res){
-	res.render('gamepad');
-});
+	this.express.get('/', function(req, res) {
+		res.render('index', {title: 'Main'});
+	});
 
-app.get('/:token', function(req, res){
-	var token = req.params.token;
-	res.render('room', {token: token});
-});
+	this.express.get('/gamepad', function(req, res) {
+		res.render('gamepad');
+	});
 
-app.listen(port);
+	this.express.get('/:token', function(req, res) {
+		var token = req.params.token;
+		res.render('room', {token: token});
+	});
+}
+
+Gamepad.prototype.setupIO = function() {
+	if (!this.express) {
+		throw new Error('Express is not initialized.');
+	}
+
+	this.ioServer = http.createServer(this.express)
+	this.io = socketio.listen(this.ioServer);
+
+	var that = this;
+	this.io.sockets.on('connection', function (socket) {
+		socket.on('room', function(room) {
+			socket.join(room);
+		});
+	});
+}
+
+Gamepad.prototype.listen = function() {
+	this.ioServer.listen(port);
+}
