@@ -46,19 +46,32 @@ sum_height = 100
 	width: 50%
 	position: relative
 	float: left
-	// border: 1px
 
-#controls>div, #arrows>div
+#menu
+	position: fixed
+	z-index: 10
+	height: 100% 
+	left: -1000%
+	width: 50%
+	transition: left 0.5s
+	font-size: 25px
+
+#menu>div
+	background: #0000B3
+	color: white
+	height: (sum_height / 3)%
+	position: relative
+	width: 100%
+	border-bottom: 1px solid black
+	border-right: 1px solid black
+
+#controls>div, #arrows>div, #menu>div
 	display: table
 
 	div 
 		display: table-cell
 		text-align: center
 		vertical-align: middle
-
-
-#menu
-	display: none
 
 body
 	-webkit-touch-callout: none
@@ -70,3 +83,6 @@ body
 
 .mousedown
 	opacity: 0.6
+
+#menu.shown
+	left: 0%

@@ -6,6 +6,7 @@
 
 	var socketConnection;
 
+	var menu = document.getElementById('menu');
 
 	function initializeSockets(){
 		socketConnection = io.connect('ws://127.0.0.1:3000', {
@@ -24,10 +25,12 @@
 			var el = document.getElementById(id);
 			el.onmousedown = onMouseDown;
 			el.onmouseup = onMouseUp;
+			el.onmouseout = onMouseUp;
 		}
+		Hammer(document.body).on("swiperight", function(ev){ toggleMenu(ev, true);});
+		Hammer(document.body).on("swipeleft", function(ev){ toggleMenu(ev, false);});
 	}
 
-	io.on
 
 	function onMouseDown(ev) {
 		ev.currentTarget.className = 'mousedown';
@@ -38,6 +41,17 @@
 		ev.currentTarget.className = '';
 		socketConnection.emit('a', {k: ev.currentTarget.id, s: 0});
 	}
+
+	function toggleMenu(ev, isShown) {
+		// toggleMenu.isShown = !Boolean(toggleMenu.isShown);
+		if (isShown){
+			menu.className = 'shown';
+		} else {
+			menu.className = '';
+		}
+		socketConnection.emit('m', {s: isShown});
+	}
+	
 
 
 }());
