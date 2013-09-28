@@ -7,22 +7,28 @@ html
 		.main
 			.content
 				.logo
-					img.img-logo(src="images/mario.png")
+					img.img-logo(id="gameLogo")
 					img.seven-bit(src="images/7bit.png")
 				.clear-fix
 				.controls
 					.room-input
 						input(id="arenaName", type="text")
 					.room-button
-						input(id="goButton", type="submit", value="Go")
+						input(id="goButton", type="submit", value="GO")
 	script(type="text/javascript", src="vendor/jquery/jquery.js")	
 	script(type="text/javascript")		
+
+		var images = [ "images/mario.png" , "images/pacman.png" ];
+		var randomNumber = Math.floor(Math.random() * images.length);
+
+		$("#gameLogo").attr("src", images[randomNumber]);
+
 		function redirectToGameRoom(){
 			window.location = "/" + $("#arenaName").val();
 		};
 		$("#arenaName").bind("keypress", function(e){
 			var code = (e.keyCode ? e.keyCode : e.which);
-			if(code == 13) { 
+			if(code == 13) {
 				redirectToGameRoom();
 			}
 		});
