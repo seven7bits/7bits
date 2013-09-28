@@ -11,6 +11,7 @@ app.configure(function(){
 	app.set('view engine', 'jade');
 });
 
+app.use(express.static(__dirname + '/../app'));
 
 app.get('/', function(req, res){
 	res.render('index', {title: 'Main'});
@@ -21,5 +22,4 @@ app.get('/:token', function(req, res){
 	res.render('room', {token: token});
 });
 
-app.use(express.static(__dirname + '/../app'));
 app.listen(port);
