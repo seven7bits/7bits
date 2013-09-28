@@ -9,7 +9,7 @@
 	var menu = document.getElementById('menu');
 
 	function initializeSockets(){
-		socketConnection = io.connect('ws://127.0.0.1:3000', {
+		socketConnection = io.connect(window.location.host, {
 			'reconnect': true,
 			'reconnection delay': 5000,
 			'max reconnection attempts': 100
@@ -23,8 +23,8 @@
 		for (var i = 0; i < controlsList.length; i++) {
 			var id = controlsList[i]; 
 			var el = document.getElementById(id);
-			el.addEventListener('mousedown', onMouseDown, false);
-			el.addEventListener('mouseup', onMouseUp, false);
+			Hammer(el).on("touch", onMouseDown);
+			Hammer(el).on("release", onMouseUp);
 		}
 		Hammer(document.body).on("swiperight", function(ev){ toggleMenu(ev, true);});
 		Hammer(document.body).on("swipeleft", function(ev){ toggleMenu(ev, false);});
@@ -44,7 +44,6 @@
 	}
 
 	function toggleMenu(ev, isShown) {
-		// toggleMenu.isShown = !Boolean(toggleMenu.isShown);
 		if (isShown){
 			menu.className = 'shown';
 		} else {
