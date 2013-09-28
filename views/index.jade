@@ -16,9 +16,18 @@ html
 					.room-button
 						input(id="goButton", type="submit", value="Go")
 	script(type="text/javascript", src="vendor/jquery/jquery.js")	
-	script(type="text/javascript")
-		$("#goButton").bind("click", function(){			
+	script(type="text/javascript")		
+		function redirectToGameRoom(){
 			window.location = "/" + $("#arenaName").val();
+		};
+		$("#arenaName").bind("keypress", function(e){
+			var code = (e.keyCode ? e.keyCode : e.which);
+			if(code == 13) { 
+				redirectToGameRoom();
+			}
+		});
+		$("#goButton").bind("click", function(){			
+			redirectToGameRoom();
 		});
 
 
