@@ -3,6 +3,7 @@ module.exports = function (grunt) {
 		pkg: grunt.file.readJSON('package.json'),
 		client_js: ['public/javascripts/*.js', 'public/javascripts/**/*.js', '!public/javascripts/libs/*.js'],
 		server_js: ['*.js', 'src/*.js'],
+		jade: ['views/*.jade'],
 		// uglify: {
 		// 	build: {
 		// 		src: '<%= javascripts %>',
@@ -60,11 +61,17 @@ module.exports = function (grunt) {
 				files: ['<%= server_js %>'],
 				tasks: ['jshint:server']
 			},
+			jade: {
+				options: {
+					livereload: true
+				},
+				files: ['<%= jade %>']
+			},
 			styles: {
 				options: {
 				  livereload: true
 				},
-				files: ['public/stylesheets/*.styl'],
+				files: ['styles/*.styl'],
 				tasks: ['stylus']
 			}
 		},

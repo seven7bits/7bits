@@ -1,0 +1,40 @@
+html
+	head
+		title Gamepad
+		link(href="css/gamepad.css", rel="stylesheet")
+	body
+		meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
+		#container
+			#arrows
+				#up 
+					div &uarr;
+				#left
+					div  &larr;
+				#right 
+					div &rarr;
+				#down 
+					div &darr;
+
+			#controls
+				#upper-a 
+					div A
+				#upper-b 
+					div B
+				#lower-a
+					div A
+				#lower-b 
+					div B
+
+			#menu
+				#start START
+				#select SELECT
+
+		script.
+			// When ready...
+			window.addEventListener("load",function() {
+				// Set a timeout...
+				setTimeout(function(){
+					// Hide the address bar!
+					window.scrollTo(0, 1);
+				}, 0);
+			});

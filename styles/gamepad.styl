@@ -1,0 +1,61 @@
+body
+	padding: 0
+	margin: 0
+#container
+	position: fixed
+	width: 100%
+	height: 100%
+
+#arrows, #controls
+	width: 50%
+	float: left
+	position: relative
+
+sum_height = 100
+
+#up, #left, #right, #down
+	height: (sum_height / 3)%
+	text-align: center
+
+#up, #down
+	background: #FFFF86
+
+#left
+	background: #B0F7F1
+
+#right
+	background: #FA9B52
+
+#up, #down
+	width: 100%
+
+#left, #right
+	float: left
+	width: 50%
+
+#upper-a, #upper-b
+	border-bottom: 1px solid black
+
+#upper-a, #lower-a
+	border-right: 1px solid black
+	margin-left: -1px
+
+#controls>div
+	background: #77D7E1
+	height: (sum_height / 2)%
+	width: 50%
+	position: relative
+	float: left
+	// border: 1px
+
+#controls>div, #arrows>div
+	display: table
+
+	div 
+		display: table-cell
+		text-align: center
+		vertical-align: middle
+
+
+#menu
+	display: none

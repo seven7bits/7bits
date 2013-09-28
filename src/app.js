@@ -17,6 +17,10 @@ app.get('/', function(req, res){
 	res.render('index', {title: 'Main'});
 });
 
+app.get('/gamepad', function(req, res){
+	res.render('gamepad');
+});
+
 app.get('/:token', function(req, res){
 	var token = req.params.token;
 	res.render('room', {token: token});
