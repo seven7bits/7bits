@@ -2,7 +2,7 @@
 html
 	head
 		title
-		link(type="text/css", rel="stylesheet", href="css/main.css")
+		link(type="text/css", rel="stylesheet", href="css/main.css")			
 	body
 		.main
 			.content
@@ -12,6 +12,13 @@ html
 				.clear-fix
 				.controls
 					.room-input
-						input(type="text")
+						input(id="arenaName", type="text")
 					.room-button
-						input(type="submit", value="Go")
+						input(id="goButton", type="submit", value="Go")
+	script(type="text/javascript", src="vendor/jquery/jquery.js")	
+	script(type="text/javascript")
+		$("#goButton").bind("click", function(){			
+			window.location = "/" + $("#arenaName").val();
+		});
+
+
