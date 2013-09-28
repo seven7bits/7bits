@@ -9,7 +9,7 @@ var port = 3000;
 
 var l = function() {
 	console.log.apply(console, arguments);
-}
+};
 
 function Gamepad() {
 	this.express = null;
@@ -72,7 +72,7 @@ Gamepad.prototype.setupIO = function() {
 
 		socket.on('disconnect', function() {
 			l('Someone disconnected');
-		})
+		});
 
 		socket.on('a', function(data) {
 			data.p = '0';
