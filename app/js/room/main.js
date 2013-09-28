@@ -1,4 +1,4 @@
-define(['../lib/module', './views/layout', '../lib/gamepad'], function(Module, Layout, Gamepad) {
+define(['../lib/module', './views/layout', '../lib/gamepad', './views/game-area'], function(Module, Layout, Gamepad, GameArea) {
 	return Module.extend({
 		setup: function() {
 			this.v.layout = new Layout();
@@ -28,6 +28,9 @@ define(['../lib/module', './views/layout', '../lib/gamepad'], function(Module, L
 
 		actions: {
 			index: function() {
+				var gameArea = new GameArea();
+				this.v.layout.gameArea.show(gameArea);
+
 				Gamepad.configure(this.loadConfig('/config/nes.json'));
 				Gamepad.start();
 			}
