@@ -1,0 +1,28 @@
+{
+	"base": {
+		"method": "JSNES.Keyboard.setKey",
+		"context": "JSNES.Keyboard"
+	},
+
+	"0": {
+		"left":   { "args": [37, 777] },
+		"right":  { "args": [39, 777] },
+		"up":     { "args": [38, 777] },
+		"down":   { "args": [40, 777] },
+		"a":      { "args": [88, 777] },
+		"b":      { "args": [89, 777] },
+		"select": { "args": [17, 777] },
+		"start":  { "args": [13, 777] }
+	},
+
+	"1": {
+		"left":   { "args": [100, 777] },
+		"right":  { "args": [102, 777] },
+		"up":     { "args": [104, 777] },
+		"down":   { "args": [98, 777] },
+		"a":      { "args": [103, 777] },
+		"b":      { "args": [105, 777] },
+		"select": { "args": [99, 777] },
+		"start":  { "args": [97, 777] }
+	}
+}
