@@ -31,12 +31,12 @@
 
 	function onMouseDown(ev) {
 		ev.currentTarget.className = 'mousedown';
-		socketConnection.emit('button-state', {button: ev.currentTarget.id, state: 1});
+		socketConnection.emit('a', {k: ev.currentTarget.id, s: 1});
 	}
 
 	function onMouseUp(ev) {
 		ev.currentTarget.className = '';
-		socketConnection.emit('button-state', {button: ev.currentTarget.id, state: 0});
+		socketConnection.emit('a', {k: ev.currentTarget.id, s: 0});
 	}
 
 

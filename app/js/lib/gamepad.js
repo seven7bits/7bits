@@ -9,7 +9,19 @@ define(function(require) {
 		},
 
 		configure: function(config) {
-			this.config = config;
+			this.config  = config;
+			this.method  = this.resolveMethod();
+		},
+
+		resolveMethod: function() {
+			var method = window;
+			var path   = this.config.method.split('.');
+
+			for (i in path) {
+				method = method[path[i]]
+			}
+
+			return method;
 		},
 
 		start: function() {
@@ -29,18 +41,16 @@ define(function(require) {
 			});
 
 			this.io.on('a', function(a) {
-				this.trigger(a.player, a.key);
+				console.log(a);
+				that.trigger(a.p, a.k, a.s);
 			});
 		},
 
-		trigger: function(player, key) {
-			var c = this.config[player][key];
+		trigger: function(player, key, state) {
+			var args = this.config[player][key].args;
+			args[1]  = state;
 
-			var method  = c.method ? c.method : this.config.base.method;
-			var context = c.context ? c.context : this.config.base.context;
-			var args    = c.args ? c.args : this.config.base.args;
-
-			method.apply(context, args);
+			this.method(args);
 		}
 	};
 });
