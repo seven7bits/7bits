@@ -25,7 +25,7 @@ define(function(require) {
 			this.io = io.connect(this.ioServer);
 
 			this.io.on('connect', function() {
-				that.io.emit('room', that.room);
+				that.io.emit('room', that.room());
 			});
 
 			this.io.on('a', function(a) {

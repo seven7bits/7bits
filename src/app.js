@@ -7,9 +7,14 @@ var express  = require('express')
 
 var port = 3000;
 
+var l = function() {
+	console.log.apply(console, arguments);
+}
+
 function Gamepad() {
 	this.express = null;
 	this.io = null;
+	this.rooms = {};
 }
 
 Gamepad.prototype.start = function() {
@@ -52,9 +57,25 @@ Gamepad.prototype.setupIO = function() {
 	this.io = socketio.listen(this.ioServer);
 
 	var that = this;
-	this.io.sockets.on('connection', function (socket) {
+
+	this.io.sockets.on('connection', function(socket) {
 		socket.on('room', function(room) {
+			l('Someone joined room:', room);
 			socket.join(room);
+
+			if (typeof that.rooms[room] != 'array') {
+				that.rooms[room] = [];
+			}
+
+			that.rooms[room].push(socket);
+		});
+
+		socket.on('disconnect', function() {
+			l('Someone disconnected');
+		})
+
+		socket.on('a', function(data) {
+			that.io.sockets.in(data.room).emit('a', data);
 		});
 	});
 }
