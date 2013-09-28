@@ -104,7 +104,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-open');
 
 	grunt.registerTask('server', 'Start a custom web server', function() {
-		require('./src/app.js');
+		require('./index');
 	});
 
 	grunt.registerTask('default', ['jshint', 'stylus', 'server', 'open', 'watch']);

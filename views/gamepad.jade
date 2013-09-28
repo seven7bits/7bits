@@ -16,25 +16,18 @@ html
 					div &darr;
 
 			#controls
-				#upper-a 
+				#a 
 					div A
-				#upper-b 
+				#b 
 					div B
-				#lower-a
+				#aa
 					div A
-				#lower-b 
+				#bb 
 					div B
 
 			#menu
 				#start START
 				#select SELECT
-
-		script.
-			// When ready...
-			window.addEventListener("load",function() {
-				// Set a timeout...
-				setTimeout(function(){
-					// Hide the address bar!
-					window.scrollTo(0, 1);
-				}, 0);
-			});
+				#full-screen FULL SCREEN
+		script(type="text/javascript", src="vendor/socket.io-client/dist/socket.io.min.js")
+		script(type="text/javascript", src="js/gamepad.js")

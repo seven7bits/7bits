@@ -21,7 +21,7 @@ Gamepad.prototype.start = function() {
 	this.setupExpress();
 	this.setupIO();
 	this.listen();
-}
+};
 
 Gamepad.prototype.setupExpress = function() {
 	this.express = express();
@@ -46,14 +46,14 @@ Gamepad.prototype.setupExpress = function() {
 		var token = req.params.token;
 		res.render('room', {token: token});
 	});
-}
+};
 
 Gamepad.prototype.setupIO = function() {
 	if (!this.express) {
 		throw new Error('Express is not initialized.');
 	}
 
-	this.ioServer = http.createServer(this.express)
+	this.ioServer = http.createServer(this.express);
 	this.io = socketio.listen(this.ioServer);
 
 	var that = this;
@@ -78,8 +78,8 @@ Gamepad.prototype.setupIO = function() {
 			that.io.sockets.in(data.room).emit('a', data);
 		});
 	});
-}
+};
 
 Gamepad.prototype.listen = function() {
 	this.ioServer.listen(port);
-}
+};
