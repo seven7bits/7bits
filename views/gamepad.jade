@@ -5,6 +5,15 @@ html
 	body
 		meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no")
 		#container
+
+			#menu
+				#start
+					div START
+				#select 
+					div SELECT
+				#full-screen
+					div FULL SCREEN
+
 			#arrows
 				#up 
 					div &uarr;
@@ -25,13 +34,6 @@ html
 				#bb 
 					div B
 
-			#menu
-				#start
-					div START
-				#select 
-					div SELECT
-				#full-screen
-					div FULL SCREEN
 		script(type="text/javascript", src="vendor/socket.io-client/dist/socket.io.min.js")
-		script(type="text/javascript", src="vendor/hammerjs/dist/hammer.min.js")
+		script(type="text/javascript", src="js/quo.js")
 		script(type="text/javascript", src="js/gamepad.js")

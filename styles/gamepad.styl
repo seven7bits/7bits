@@ -1,3 +1,6 @@
+sum_height = 100
+transition_time = 0.5s
+
 body
 	padding: 0
 	margin: 0
@@ -17,8 +20,8 @@ body
 	width: 50%
 	float: left
 	position: relative
-
-sum_height = 100
+	opacity: 1
+	transition: opacity transition_time
 
 #up, #left, #right, #down
 	height: (sum_height / 3)%
@@ -60,7 +63,7 @@ sum_height = 100
 	height: 100% 
 	left: -1000%
 	width: 50%
-	transition: left 0.5s
+	transition: left transition_time
 	font-size: 25px
 
 #menu>div
@@ -85,3 +88,6 @@ sum_height = 100
 
 #menu.shown
 	left: 0%
+
+#menu.shown+#arrows
+	opacity: 0
