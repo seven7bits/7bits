@@ -46,7 +46,8 @@ define(function(require) {
 		},
 
 		trigger: function(player, key, state) {
-			var args = this.config[player][key].args;
+			console.log(arguments);
+			var args = this.config["" + player][key].args;
 			args[1]  = state;
 
 			this.method.apply(this, args);
