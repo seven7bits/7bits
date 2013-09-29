@@ -1,7 +1,7 @@
 define(function(require) {
 	var io = require('io');
 	return {
-		ioServer: 'http://127.0.0.1:3000',
+		ioServer: window.location.host,
 		config: null,
 
 		room: function() {
