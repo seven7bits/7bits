@@ -5,7 +5,7 @@ define(function(require) {
 		config: null,
 
 		room: function() {
-			return window.location.href.split('/').pop();
+			return window.location.href.split('/').pop().split('#').shift();
 		},
 
 		configure: function(config) {

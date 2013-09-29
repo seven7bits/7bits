@@ -83,6 +83,7 @@ Gamepad.prototype.setupIO = function() {
 			room  = data.room;
 			group = data.group;
 
+			console.log('Join (', group, ') room: ', room);
 			socket.join(room);
 
 			if (!that.rooms[room]) {
@@ -98,7 +99,7 @@ Gamepad.prototype.setupIO = function() {
 
 		socket.on('a', function(data) {
 			data.p = player;
-			that.io.sockets.in(data.room).emit('a', data);
+			that.io.sockets.in(room).emit('a', data);
 		});
 	});
 };

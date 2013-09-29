@@ -9,7 +9,7 @@
 	var menu = document.getElementById('menu');
 
 	function room() {
-		return window.location.href.split('/').pop();
+		return window.location.href.split('/').pop().split('#').shift();
 	}
 
 	function initializeSockets(){
