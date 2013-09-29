@@ -41,7 +41,6 @@ define(function(require) {
 			});
 
 			this.io.on('a', function(a) {
-				console.log(a);
 				that.trigger(a.p, a.k, a.s);
 			});
 		},

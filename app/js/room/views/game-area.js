@@ -6,7 +6,8 @@ define(function(require) {
 		nes: null,
 
 		ui: {
-			screen: '#screen'
+			screen: '#screen',
+			nes: '#nes-screen'
 		},
 
 		events: {
@@ -68,18 +69,21 @@ define(function(require) {
 
 		selectRoom: function(rom) {
 			if (rom.get('type') === 'js') {
+				this.ui.nes.hide();
+				this.ui.screen.show();
 				this.ui.screen.load(rom.get('path'), function() {
 					app.trigger('gamepad:configure', rom.get('config'));
 				});
 			} else {
-				this.onShow();
+				this.ui.nes.show();
+				this.ui.screen.hide();
 				this.nes.ui.loadROM(rom.get('path'));
 			}
 		},
 
 		onShow: function() {
-			this.ui.screen.empty();
-			var ui = this.ui.screen.JSNESUI({
+			this.ui.nes.empty();
+			var ui = this.ui.nes.JSNESUI({
 				"Homebrew": [
 					['Concentration Room', 'roms/croom/croom.nes'],
 					['LJ65', 'roms/lj65/lj65.nes'],
