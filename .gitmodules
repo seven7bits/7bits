@@ -7,3 +7,6 @@
 [submodule "app/js/games/bitzz"]
 	path = app/js/games/bitzz
 	url = git@github.com:seven7bits/bitzzGame.git
+[submodule "app/js/games/tron"]
+	path = app/js/games/tron
+	url = git@github.com:seven7bits/tron.git
