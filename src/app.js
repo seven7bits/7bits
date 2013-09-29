@@ -91,10 +91,18 @@ Gamepad.prototype.setupIO = function() {
 			}
 
 			player = seat(room, group, socket);
+
+			if ('players' == group) {
+				that.io.sockets.in(room).emit('status', { user: player, status: 1 });
+			}
 		});
 
 		socket.on('disconnect', function() {
 			that.rooms[room][group][player] = null;
+
+			if ('players' == group) {
+				that.io.sockets.in(room).emit('status', { user: player, status: 0 });
+			}
 		});
 
 		socket.on('a', function(data) {

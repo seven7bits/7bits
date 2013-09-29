@@ -40,6 +40,10 @@ define(function(require) {
 				that.io.emit('room', { room: that.room(), group: 'viewers' });
 			});
 
+			this.io.on('status', function(data) {
+				app.trigger('user:status', data.user, data.status);
+			});
+
 			this.io.on('a', function(a) {
 				that.trigger(a.p, a.k, a.s);
 			});
