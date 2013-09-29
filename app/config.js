@@ -50,6 +50,11 @@ requirejs.config({
 });
 
 require(['app'], function(app) {
+	this._.templateSettings = {
+		'evaluate': /\{\{(.+?)\}\}/g,
+		'interpolate': /\{\{=(.+?)\}\}/g,
+		'escape': /\{\{-(.+?)\}\}/g
+	};
 	window.app = app;
 	app.start();
 });
