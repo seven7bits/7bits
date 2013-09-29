@@ -36,11 +36,21 @@ define(['../lib/module', './views/layout', '../lib/gamepad', './views/game-area'
 
 				Gamepad.configure(this.loadConfig('/config/nes.json'));
 				Gamepad.start();
+			},
+
+			selectRoom: function(rom) {
+				if (!$('canvas').length) {
+					this.actions.index();
+				}
+
+				var rom = games.findWhere({ name: rom });
+				app.trigger('rom:select', rom);
 			}
 		},
 
 		appRoutes: {
-			'': 'index'
+			'': 'index',
+			':rom': 'selectRoom'
 		}
 	});
 });

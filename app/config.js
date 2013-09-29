@@ -7,7 +7,7 @@ requirejs.config({
 		'backbone': '../vendor/backbone/backbone',
 		'marionette': '../vendor/marionette/lib/backbone.marionette',
 		'nes': '../vendor/jsnes/source/nes',
-		'nes-ui': '../vendor/jsnes/source/ui',
+		'nes-ui': 'jsnes/ui',
 	},
 
 	shim: {

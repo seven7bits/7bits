@@ -66,7 +66,7 @@ Gamepad.prototype.setupIO = function() {
 		var guys = that.rooms[room][group];
 
 		for (var i in guys) {
-			if (null == guys[i]) {
+			if (null === guys[i]) {
 				guys[i] = socket;
 				return i;
 			}

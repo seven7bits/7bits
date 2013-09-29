@@ -1,6 +1,16 @@
 define(function(require) {
 	require('nes-ui');
 	return require('backbone').View.extend({
+		nes: null,
+
+		initialize: function() {
+			this.listenTo(app, 'rom:select', this.selectRoom);
+		},
+
+		selectRoom: function(rom) {
+			this.nes.ui.loadROM(rom.get('path'));
+		},
+
 		onShow: function() {
 			var ui = $('#game-area').JSNESUI({
 				"Homebrew": [
@@ -36,7 +46,7 @@ define(function(require) {
 				]
 			});
 
-			var nes = new JSNES({
+			this.nes = new JSNES({
 				'swfPath': '/vendor/jsnes/lib/',
 				'ui': ui
 			});
