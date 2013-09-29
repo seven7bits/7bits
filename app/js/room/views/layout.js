@@ -5,7 +5,8 @@ define(function(require) {
 			games: '#games',
 			gameArea: '#game-area',
 			stats: '#stats',
-			chat: '#chat'
+			chat: '#chat',
+			qr: '#qr'
 		}
 	});
 });

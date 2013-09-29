@@ -1,4 +1,5 @@
-define(['../lib/module', './views/layout', '../lib/gamepad', './views/game-area', './views/games-list', './collections/games', './views/stats'], function(Module, Layout, Gamepad, GameArea, GamesList, games, Stats) {
+define(['../lib/module', './views/layout', '../lib/gamepad', './views/game-area', './views/games-list', './collections/games', './views/qr', './views/stats'], function(Module, Layout, Gamepad, GameArea, GamesList, games, QR, Stats) {
+
 	return Module.extend({
 		setup: function() {
 			this.v.layout = new Layout();
@@ -34,11 +35,13 @@ define(['../lib/module', './views/layout', '../lib/gamepad', './views/game-area'
 			index: function() {
 				var gameArea  = new GameArea();
 				var gamesList = new GamesList({ collection: games });
+				var qr = new QR();
 				var stats     = new Stats();
 
 				this.v.layout.gameArea.show(gameArea);
 				this.v.layout.games.show(gamesList);
 				this.v.layout.stats.show(stats);
+				this.v.layout.qr.show(qr);
 
 				Gamepad.configure(this.loadConfig('/config/nes.json'));
 				Gamepad.start();

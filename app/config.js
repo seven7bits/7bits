@@ -8,6 +8,7 @@ requirejs.config({
 		'marionette': '../vendor/marionette/lib/backbone.marionette',
 		'nes': '../vendor/jsnes/source/nes',
 		'nes-ui': 'jsnes/ui',
+		'qr': '../js/qrcode.min' 
 	},
 
 	shim: {
@@ -22,6 +23,7 @@ requirejs.config({
 		},
 
 		'nes': ['jquery'],
+
 
 		'../vendor/jsnes/lib/dynamicaudio-min': ['nes'],
 		'../vendor/jsnes/source/utils': ['nes'],
