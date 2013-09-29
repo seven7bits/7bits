@@ -18,7 +18,7 @@ define(function(require) {
 			var path   = this.config.method.split('.');
 
 			for (i in path) {
-				method = method[path[i]]
+				method = method[path[i]];
 			}
 
 			return method;

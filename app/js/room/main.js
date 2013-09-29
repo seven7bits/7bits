@@ -6,7 +6,7 @@ define(['../lib/module', './views/layout', '../lib/gamepad', './views/game-area'
 		},
 
 		setupEvents: function() {
-
+			this.listenTo(app, 'gamepad:configure', this.configureGamepad);
 		},
 
 		loadConfig: function(url) {
@@ -24,6 +24,10 @@ define(['../lib/module', './views/layout', '../lib/gamepad', './views/game-area'
 			});
 
 			return config;
+		},
+
+		configureGamepad: function(config) {
+			Gamepad.configure(this.loadConfig(config));
 		},
 
 		actions: {

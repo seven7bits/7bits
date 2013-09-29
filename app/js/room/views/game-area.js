@@ -67,10 +67,18 @@ define(function(require) {
 		},
 
 		selectRoom: function(rom) {
-			this.nes.ui.loadROM(rom.get('path'));
+			if (rom.get('type') === 'js') {
+				this.ui.screen.load(rom.get('path'), function() {
+					app.trigger('gamepad:configure', rom.get('config'));
+				});
+			} else {
+				this.onShow();
+				this.nes.ui.loadROM(rom.get('path'));
+			}
 		},
 
 		onShow: function() {
+			this.ui.screen.empty();
 			var ui = this.ui.screen.JSNESUI({
 				"Homebrew": [
 					['Concentration Room', 'roms/croom/croom.nes'],
