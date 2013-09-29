@@ -35,6 +35,8 @@
 			$$('#' + id).on('touchstart', onTouchStart);
 			$$('#' + id).on('touchend', onTouchEnd);
 		}
+		$$('body').swipeRight(function(ev){toggleMenu(ev, true);});
+		$$('body').swipeLeft(function(ev){toggleMenu(ev, false);});
 	}
 
 
@@ -46,6 +48,15 @@
 	function onTouchEnd(ev) {
 		ev.currentTarget.className = '';
 		socketConnection.emit('a', {k: ev.currentTarget.id, s: 0});
+	}
+
+	function toggleMenu(ev, isShown) {
+		if (isShown){
+			menu.className = 'shown';
+		} else {
+			menu.className = '';
+		}
+		socketConnection.emit('a', {s: isShown});
 	}
 
 }());
