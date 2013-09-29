@@ -95,15 +95,29 @@ Gamepad.prototype.setupIO = function() {
 			if ('players' == group) {
 				that.io.sockets.in(room).emit('status', { user: player, status: 1 });
 			}
+
+			if ('viewers' == group) {
+				if (that.rooms[room].players[0]) {
+					that.io.sockets.in(room).emit('status', { user: 0, status: 1 });
+				}
+
+				if (that.rooms[room].players[1]) {
+					that.io.sockets.in(room).emit('status', { user: 1, status: 1 });
+				}
+			}
 		});
 
-		socket.on('disconnect', function() {
+		var remove = function() {
 			that.rooms[room][group][player] = null;
 
 			if ('players' == group) {
 				that.io.sockets.in(room).emit('status', { user: player, status: 0 });
 			}
-		});
+		};
+
+		socket.on('disconnect', remove);
+		socket.on('error', remove);
+		socket.on('connect_failed', remove);
 
 		socket.on('a', function(data) {
 			data.p = player;
