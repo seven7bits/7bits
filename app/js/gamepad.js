@@ -33,16 +33,12 @@
 			var id = controlsList[i]; 
 			$$('#' + id).on('touchstart', onTouchStart);
 			$$('#' + id).on('touchend', onTouchEnd);
-			$$('#' + id).on('mousedown', onTouchStart);
-			$$('#' + id).on('mouseup', onTouchEnd);
 		}
 		
 		for (var i = 0; i < sharedControls.length; i++) {
 			var id = sharedControls[i]; 
 			$$('#' + id).on('touchstart', function(ev){ onTouchStart(ev, {isShared: true});});
 			$$('#' + id).on('touchend', function(ev){ onTouchEnd(ev, {isShared: true});});
-			$$('#' + id).on('mousedown', function(ev){ onTouchStart(ev, {isShared: true});});
-			$$('#' + id).on('mouseup', function(ev){ onTouchEnd(ev, {isShared: true});});
 		}
 
 		$$('body').rotateRight(function(ev){toggleMenu(ev, true);});
