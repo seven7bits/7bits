@@ -1,0 +1,6 @@
+[submodule "app/js/games/frangois"]
+	path = app/js/games/frangois
+	url = git@github.com:seven7bits/frangoisGame.git
+[submodule "app/js/games/fangois"]
+	path = app/js/games/fangois
+	url = git@github.com:seven7bits/frangoisGame.git
