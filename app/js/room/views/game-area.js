@@ -110,8 +110,9 @@ define(function(require) {
 				'ui': ui
 			});
 
+			var that = this;
 			window.nesKeyboard = function() {
-				nes.keyboard.setKey.apply(nes.keyboard, arguments);
+				that.nes.keyboard.setKey.apply(that.nes.keyboard, arguments);
 			}
 
 			this.big();
