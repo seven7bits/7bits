@@ -25,6 +25,7 @@ define(function(require) {
 		{ type: 'nes', name: 'Tetris', path: 'roms/Tetris (U) [!].nes' },
 		{ type: 'nes', name: 'Tetris 2', path: 'roms/Tetris 2 (U) [!].nes' },
 		{ type: 'nes', name: 'Zelda II - The Adventure of Link', path: 'roms/Zelda II - The Adventure of Link (U).nes' },
-		{ type: 'js', name: 'OOOOOOOOOOOOOOOO', path: '/js/games/fangois/7bits/game.html', config: 'js/games/fangois/7bits/config.json'}
+		{ type: 'js', name: 'fangois', path: '/js/games/fangois/7bits/game.html', config: 'js/games/fangois/7bits/config.json'},
+		//{ type: 'js', name: 'bitzz', path: '/js/games/bitzz/7bits/game.html', config: 'js/games/bitzz/7bits/config.json'}
 	]);
 });
