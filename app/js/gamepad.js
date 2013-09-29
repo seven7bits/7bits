@@ -1,6 +1,8 @@
 (function(){
 	'use strict';
 
+	var currentEl;
+
 	initializeSockets();
 	initializeBindings();
 
@@ -33,6 +35,7 @@
 			var id = controlsList[i]; 
 			$$('#' + id).on('touchstart', onTouchStart);
 			$$('#' + id).on('touchend', onTouchEnd);
+			$$('#' + id).on('touchmove', onTouchMove);
 		}
 		
 		for (var i = 0; i < sharedControls.length; i++) {
@@ -60,6 +63,7 @@
 			obj.className = 'mousedown';
 			socketConnection.emit('a', {k: obj.id, s: 1});
 		}
+		currentEl = ev.currentTarget;
 	}
 
 	function onTouchEnd(ev, options) {
@@ -70,14 +74,23 @@
 			}
 		} else {
 			deactivateEl(ev.currentTarget);
+			void currentEl;
 		}
 
 		function deactivateEl(obj){
 			obj.className = '';
 			socketConnection.emit('a', {k: obj.id, s: 0});
+
 		}
 	}
 
+	function onTouchMove (ev) {
+		console.log(ev.currentTarget);
+		if (ev.currentTarget !== currentEl){
+			currentEl.className = '';
+			onTouchEnd(currentEl);
+		}
+	}
 
 	function toggleMenu(ev, isShown) {
 		if (isShown){
